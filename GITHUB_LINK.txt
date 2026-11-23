@@ -1,6 +1,7 @@
+
 ENLACE AL REPOSITORIO GITHUB
 
-Pegar aquí la URL pública del repositorio una vez creado y publicado.
-Ejemplo de formato: https://github.com/USUARIO/Programacion-Web-IPLACEX
+Repositorio público:
+https://github.com/CristobalWerner1806/Entrega_Programacion_Web
 
-Importante: este archivo debe actualizarse con el enlace real antes de entregar en Blackboard.
+Este repositorio contiene el proyecto correspondiente a la Evaluación 3 de Programación Web de IPLACEX.
