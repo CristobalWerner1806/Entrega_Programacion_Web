@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programación Web | Menú principal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+<body>
+    <header class="encabezado">
+        <div class="marca">IPLACEX <span>PROGRAMACIÓN WEB</span></div>
+    </header>
+    <main class="contenedor">
+        <section class="panel panel-inicio">
+            <p class="sobrelinea">EVALUACIÓN UNIDAD N.º 3</p>
+            <h1>Aplicación de ejercicios</h1>
+            <p class="introduccion">Selecciona el ejercicio que deseas desarrollar.</p>
+            <div class="acciones-menu">
+                <a class="boton boton-principal" href="{{ url_for('ejercicio1') }}">Ejercicio 1 <span>Promedio y asistencia</span></a>
+                <a class="boton boton-secundario" href="{{ url_for('ejercicio2') }}">Ejercicio 2 <span>Comparación de nombres</span></a>
+            </div>
+        </section>
+    </main>
+    <footer>Desarrollo web con Python y Flask</footer>
+</body>
+</html>

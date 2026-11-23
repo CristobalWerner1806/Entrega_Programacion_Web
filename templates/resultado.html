@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado | Programación Web</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+<body>
+    <header class="encabezado"><a class="marca" href="{{ url_for('index') }}">IPLACEX <span>PROGRAMACIÓN WEB</span></a></header>
+    <main class="contenedor">
+        <section class="panel panel-resultado">
+            {% if error_404 or not registro %}
+                <p class="sobrelinea">PÁGINA NO ENCONTRADA</p>
+                <h1>No existe el resultado solicitado</h1>
+                <p class="introduccion">El registro puede no existir o haber sido eliminado al reiniciar la aplicación.</p>
+            {% elif registro.tipo == 'promedio' %}
+                <p class="sobrelinea">RESULTADO DEL EJERCICIO 1</p>
+                <h1>Promedio y asistencia</h1>
+                <div class="resumen-datos">
+                    <p>Nota 1: <strong>{{ '%.1f'|format(registro.nota1) }}</strong></p>
+                    <p>Nota 2: <strong>{{ '%.1f'|format(registro.nota2) }}</strong></p>
+                    <p>Nota 3: <strong>{{ '%.1f'|format(registro.nota3) }}</strong></p>
+                    <p>Asistencia: <strong>{{ '%.1f'|format(registro.asistencia) }}%</strong></p>
+                </div>
+                <div class="resultado-principal"><span>Promedio</span><strong>{{ '%.2f'|format(registro.promedio) }}</strong></div>
+                <div class="estado {% if registro.estado == 'APROBADO' %}estado-aprobado{% else %}estado-reprobado{% endif %}">{{ registro.estado }}</div>
+                <p class="nota-condicion">Para aprobar se requiere promedio igual o superior a 40 y asistencia igual o superior a 75%.</p>
+            {% else %}
+                <p class="sobrelinea">RESULTADO DEL EJERCICIO 2</p>
+                <h1>Comparación de nombres</h1>
+                <div class="resumen-datos">
+                    {% for nombre in registro.nombres %}<p>Nombre ingresado: <strong>{{ nombre }}</strong> ({{ nombre|length }} caracteres)</p>{% endfor %}
+                </div>
+                <div class="resultado-principal"><span>{% if registro.nombres_mayores|length > 1 %}Nombres con mayor cantidad de caracteres{% else %}Nombre con mayor cantidad de caracteres{% endif %}</span><strong class="nombre-destacado">{{ registro.nombres_mayores|join(', ') }}</strong></div>
+                <div class="estado estado-informativo">{{ registro.cantidad_caracteres }} caracteres</div>
+            {% endif %}
+            <div class="acciones-formulario"><a class="boton boton-principal" href="{{ url_for('index') }}">Volver al menú principal</a></div>
+        </section>
+    </main>
+    <footer>Resultado generado por la aplicación Flask.</footer>
+</body>
+</html>

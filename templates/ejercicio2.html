@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2 | Comparación de nombres</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+<body>
+    <header class="encabezado"><a class="marca" href="{{ url_for('index') }}">IPLACEX <span>PROGRAMACIÓN WEB</span></a></header>
+    <main class="contenedor">
+        <section class="panel">
+            <p class="sobrelinea">EJERCICIO 2</p>
+            <h1>Comparación de nombres</h1>
+            <p class="introduccion">Ingresa tres nombres diferentes. La aplicación identificará el que tenga más caracteres.</p>
+            {% if error %}<div class="alerta" role="alert">{{ error }}</div>{% endif %}
+            <form action="{{ url_for('ejercicio2') }}" method="POST" class="formulario">
+                <div class="campo"><label for="nombre1">Primer nombre</label><input type="text" id="nombre1" name="nombre1" maxlength="80" required value="{{ datos.get('nombre1', '') }}" placeholder="Ej.: Cristóbal"></div>
+                <div class="campo"><label for="nombre2">Segundo nombre</label><input type="text" id="nombre2" name="nombre2" maxlength="80" required value="{{ datos.get('nombre2', '') }}" placeholder="Ej.: Camila"></div>
+                <div class="campo"><label for="nombre3">Tercer nombre</label><input type="text" id="nombre3" name="nombre3" maxlength="80" required value="{{ datos.get('nombre3', '') }}" placeholder="Ej.: Bastián"></div>
+                <div class="acciones-formulario"><button class="boton boton-principal" type="submit">Comparar nombres</button><a class="enlace-volver" href="{{ url_for('index') }}">Volver al menú</a></div>
+            </form>
+        </section>
+    </main>
+    <footer>Los datos se procesan mediante Python en el servidor Flask.</footer>
+</body>
+</html>
